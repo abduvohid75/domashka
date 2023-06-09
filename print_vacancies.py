@@ -1,9 +1,6 @@
-#from colorama import Fore
-
 import json
 
 def print_vacancies():
-
     try:
         with open("vacancies.json")  as json_file:
             content = json.load(json_file)
@@ -24,7 +21,3 @@ def print_vacancies():
             print(f'Type of Employment:{vacancy["items"]["employment"]}\n')
             vacancies_count +=1
         print(f"Всего:  {vacancies_count}\n")
-
-
-
-
