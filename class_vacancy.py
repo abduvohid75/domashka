@@ -1,5 +1,4 @@
-#import classes_api
-class Vacancy:
+class Vacancy:  # Определение класса вакансий
     def __init__(self, name, url, salary_from, salary_to, requirement, responsibility, professional_roles, experience, employment):
 
         self.name = name
@@ -15,14 +14,12 @@ class Vacancy:
         self.employment = employment
 
     @staticmethod
-    def sorted_by_salary(not_sorted_vacancies: list):
+    def sorted_by_salary(not_sorted_vacancies: list): # сортировка по зарплате
         count_of_vacancies = len(not_sorted_vacancies)
         sorted_vacancies =  []
         highest_salary_from_value = 0
         highest_salary_from_sample = None
-
         while len(sorted_vacancies) != count_of_vacancies:
-
             for vacancy in not_sorted_vacancies:
                 if vacancy.salary_from >= highest_salary_from_value:
                     highest_salary_from_value = vacancy.salary_from
@@ -31,5 +28,4 @@ class Vacancy:
             not_sorted_vacancies.remove(highest_salary_from_sample)
 
             highest_salary_from_value = 0
-
         return  sorted_vacancies
