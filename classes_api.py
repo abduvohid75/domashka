@@ -5,13 +5,13 @@ import json
 import os
 import time
 
-class SiteAPI(ABC):
+class SiteAPI(ABC): # Класс для получения запросов через АПИ
 
     @abstractmethod
     def get_vacancies(self, search_query: str, keywords: str, top_vacancies: int):
         pass
 
-class HeadHunterAPI(SiteAPI):
+class HeadHunterAPI(SiteAPI): # Блок для получения вакансий из сайта Хед-хантер
 
     def get_vacancies(self, search_query: str, keywords: str, top_vacancies: int):
         page_number = 0
@@ -51,7 +51,7 @@ class HeadHunterAPI(SiteAPI):
                     time.sleep(0.25)
             print(f"LOADING: 50 %")
 
-class SuperJobAPI(SiteAPI):
+class SuperJobAPI(SiteAPI):  # Блок для получения вакансий из сайта СуперДжоб
     def get_vacancies(self, search_query: str, keywords: str, top_vacancies: int):
         headers = {"X-Api-App-Id": 'v3.h.4470305.34df124d3610ceb6323baf8548815788c0c9031b.7a728b4d5c84b82bb14e5899a8991fdfe0fbff53'}
         superjob_api = 'https://api.superjob.ru/2.0/vacancies'
