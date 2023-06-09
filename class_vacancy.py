@@ -1,7 +1,4 @@
 #import classes_api
-
-
-
 class Vacancy:
     def __init__(self, name, url, salary_from, salary_to, requirement, responsibility, professional_roles, experience, employment):
 
