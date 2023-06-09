@@ -20,13 +20,17 @@ class Saver(ABC):
         pass
 
 class JSONSaver(Saver):
+    """
+    Для добавления, удаления вакансий
+    """
     @staticmethod
-    def add_vacancies(sorted_vacancies: list, top_vacancies: int):
+    def add_vacancies(sorted_vacancies: list, top_vacancies: int):   # ДОБАВЛЕНИЕ ВАКАНСИЙ В ФАЙЛ
         itaration = 0
 
+        
         for vacancy_sample in sorted_vacancies:
             vacancy_to_json = {"items":{
-                    "name": vacancy_sample.name,
+        1            "name": vacancy_sample.name,
                     "url": vacancy_sample.url,
                     "salary_from": vacancy_sample.salary_from,
                     "salary_to": vacancy_sample.salary_to,
@@ -56,7 +60,7 @@ class JSONSaver(Saver):
             if itaration == top_vacancies:
                 break
     @staticmethod
-    def get_vacancies_by_salary(salaty_from: int):
+    def get_vacancies_by_salary(salaty_from: int): # Сортировка вакансий по зарплате 
 
         vacancies_sorted_by_salary = []
         try:
@@ -78,7 +82,7 @@ class JSONSaver(Saver):
                 json_file_write.close()
 
     @staticmethod
-    def delete_vacancies():
+    def delete_vacancies():   # Удаление json файла вакансий
 
         try:
             os.remove("vacancies.json")
