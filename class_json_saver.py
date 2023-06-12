@@ -30,7 +30,7 @@ class JSONSaver(Saver):
         
         for vacancy_sample in sorted_vacancies:
             vacancy_to_json = {"items":{
-        1            "name": vacancy_sample.name,
+                    "name": vacancy_sample.name,
                     "url": vacancy_sample.url,
                     "salary_from": vacancy_sample.salary_from,
                     "salary_to": vacancy_sample.salary_to,
