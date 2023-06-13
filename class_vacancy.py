@@ -25,6 +25,5 @@ class Vacancy:  # Определение класса вакансий
                     highest_salary_from_sample = vacancy
             sorted_vacancies.append(highest_salary_from_sample)
             not_sorted_vacancies.remove(highest_salary_from_sample)
-
             highest_salary_from_value = 0
         return  sorted_vacancies
