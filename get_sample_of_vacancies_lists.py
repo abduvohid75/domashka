@@ -16,7 +16,6 @@ def get_sample_of_vacancies_list_hh_ru(search_query: str, keywords: str, top_vac
     else:
         vacancy_index = 0
         barrier = len(content)
-
         for vacancy in content:
             if vacancy["snippet"]["requirement"] is None:
                 requirement = "Unknown"
@@ -32,11 +31,9 @@ def get_sample_of_vacancies_list_hh_ru(search_query: str, keywords: str, top_vac
             professional_roles = vacancy["professional_roles"][0]["name"]
             experience = vacancy["experience"]["name"]
             employment = vacancy["employment"]["name"]
-
             if vacancy["salary"] is None:
                 salary_from = 0
                 salary_to = 0
-
             else:
                 if vacancy["salary"]["from"] is None:
                     salary_from = 0
@@ -52,7 +49,6 @@ def get_sample_of_vacancies_list_hh_ru(search_query: str, keywords: str, top_vac
                 os.remove(file_write_jobs)
                 break
         return vacancies
-
 def get_sample_of_vacancies_list_sj_ru(search_query: str, keywords: str, top_vacancies: int):
     vacancies = []
     SuperJobAPI().get_vacancies(search_query, keywords, top_vacancies)
@@ -89,15 +85,12 @@ def get_sample_of_vacancies_list_sj_ru(search_query: str, keywords: str, top_vac
                 salary_to = vacancy["payment_to"]
                 vacancies.append(Vacancy(name,url,salary_from,salary_to, requirement, responsibility, professional_roles, experience, employment))
                 vacancy_index +=1
-
                 if vacancy_index == barrier:
                     os.remove(file_write_jobs)
                     break
         return vacancies
-
 def unite_samples_of_vacancies(search_query: str, keywords: str, top_vacancies: int) -> object:
     vacancies_hh_ru = get_sample_of_vacancies_list_hh_ru(search_query, keywords, top_vacancies)
     vacancies_sj_ru = get_sample_of_vacancies_list_sj_ru(search_query, keywords, top_vacancies)
     vacancies_all = vacancies_sj_ru + vacancies_hh_ru
-
     return vacancies_all
