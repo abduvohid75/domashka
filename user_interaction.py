@@ -30,7 +30,7 @@ def user_interaction():
                 JSONSaver.add_vacancies(sorted_vacancies, top_vacancies)
             try:
                 with open("vacancies.json")  as file:
-                    print_in_monitor = input("Показатӣ на экран?  (1. Да  2. Нет)")
+                    print_in_monitor = input("Показать на экран?  (1. Да  2. Нет)")
                     if print_in_monitor == "1":
                         print_vacancies()
             except FileNotFoundError:
