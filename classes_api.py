@@ -17,10 +17,8 @@ class HeadHunterAPI(SiteAPI): # Блок для получения ваканс�
         page_number = 0
         pages_count = 1
         while page_number < pages_count:
-
             hh_api = f'https://api.hh.ru/vacancies?text={search_query.replace(" ", "&")}&' \
                      f'description={keywords.replace(" ", "&")}&area=1&page={page_number}&per_page=100'
-
             response = requests.get(hh_api, headers={"User-Agent": "K_ParserApp/1.0"})
             response_json = response.json()
             file_write_jobs = 'hh_jobs.json'
@@ -57,7 +55,6 @@ class SuperJobAPI(SiteAPI):  # Блок для получения ваканси
         superjob_api = 'https://api.superjob.ru/2.0/vacancies'
         page_number = 0
         pages_count = 1
-
         while page_number < pages_count:
             response = requests.get(superjob_api, headers= headers, params= f"keyword={search_query.replace(' ', '&')}"
                                                                           f"{keywords.replace(' ', '&')}"
