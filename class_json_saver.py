@@ -26,8 +26,6 @@ class JSONSaver(Saver):
     @staticmethod
     def add_vacancies(sorted_vacancies: list, top_vacancies: int):   # ДОБАВЛЕНИЕ ВАКАНСИЙ В ФАЙЛ
         itaration = 0
-
-        
         for vacancy_sample in sorted_vacancies:
             vacancy_to_json = {"items":{
                     "name": vacancy_sample.name,
@@ -42,7 +40,6 @@ class JSONSaver(Saver):
                     "employment": vacancy_sample.employment
                 }
             }
-
             with open("vacancies.json", "a") as json_file:
                 if os.stat("vacancies.json").st_size == 0:
                     json.dump([vacancy_to_json], json_file, indent=4)
@@ -61,7 +58,6 @@ class JSONSaver(Saver):
                 break
     @staticmethod
     def get_vacancies_by_salary(salaty_from: int): # Сортировка вакансий по зарплате 
-
         vacancies_sorted_by_salary = []
         try:
             with open("vacancies.json") as json_file_read:
@@ -71,7 +67,6 @@ class JSONSaver(Saver):
         except FileNotFoundError:
             print('')
         else:
-
             for vacancy in content:
                 if vacancy["items"]["salary_from"] >= salaty_from:
                     vacancies_sorted_by_salary.append(vacancy)
@@ -80,17 +75,9 @@ class JSONSaver(Saver):
                 content = vacancies_sorted_by_salary
                 json.dump(content, json_file_write, indent=4)
                 json_file_write.close()
-
     @staticmethod
     def delete_vacancies():   # Удаление json файла вакансий
-
         try:
             os.remove("vacancies.json")
         except FileNotFoundError:
             print('')
-
-
-
-
-
-
