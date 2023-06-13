@@ -1,6 +1,5 @@
 class Vacancy:  # Определение класса вакансий
     def __init__(self, name, url, salary_from, salary_to, requirement, responsibility, professional_roles, experience, employment):
-
         self.name = name
         self.url = url
         self.salary_from = salary_from
